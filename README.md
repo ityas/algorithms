@@ -1,2 +1,2 @@
 # Algorithms
-This is my practice of writing algorithms in python
+My practice of writing algorithms in python

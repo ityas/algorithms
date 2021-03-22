@@ -28,4 +28,10 @@ def quick_sort(nums_list):
 
             return nums_list
 
+        return nums_list
+
     return sort(nums_list, 0, len(nums_list) - 1)
+
+
+if __name__ == '__main__':
+    print(quick_sort([0]))

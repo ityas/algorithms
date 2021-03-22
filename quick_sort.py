@@ -1,7 +1,7 @@
 # быстрая сортировка
 def quick_sort(nums_list):
     def partition(nums_list, low, high):
-        m = nums_list[(low + high) // 2]
+        m = nums_list[((low + high) // 2)]  # опорный элемент
         i = low - 1
         j = high + 1
 

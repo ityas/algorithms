@@ -26,8 +26,8 @@ def merge_sort(nums_list):
 
         return sorted_list
 
-    if len(nums_list) <= 1:
-        return nums_list
+    if len(nums_list) > 1:
+        middle = len(nums_list) // 2
+        return merge(merge_sort(nums_list[:middle]), merge_sort(nums_list[middle:]))
 
-    middle = len(nums_list) // 2
-    return merge(merge_sort(nums_list[:middle]), merge_sort(nums_list[middle:]))
+    return nums_list

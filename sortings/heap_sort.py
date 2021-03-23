@@ -6,11 +6,11 @@ def heap_sort(nums_list):
         right_child = (2 * root_index) + 2
 
         # если левый потомок больше, чем текущий наибольший и имеет допустимый индекс
-        if heap[left_child] > heap[largest] and left_child < heap_size:
+        if left_child < heap_size and heap[left_child] > heap[largest]:
             largest = left_child
 
         # если правый потомок больше, чем текущий наибольший и имеет допустимый индекс
-        if heap[right_child] > heap[largest] and right_child < heap_size:
+        if right_child < heap_size and heap[right_child] > heap[largest]:
             largest = right_child
 
         # если наибольший элемент уже не корневой, они меняются местами
@@ -28,3 +28,5 @@ def heap_sort(nums_list):
     for i in range(n - 1, 0, -1):
         nums_list[i], nums_list[0] = nums_list[0], nums_list[i]
         heapify(nums_list, i, 0)
+
+    return nums_list

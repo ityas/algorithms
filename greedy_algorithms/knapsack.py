@@ -52,6 +52,8 @@ def knapsack_without_reps(things, knapsack_weight):
     weight = [i[1] for i in things[:n]]
     price = [i[0] for i in things[:n]]
 
+    # https://stepik.org/lesson/13259/step/3
+
 
 if __name__ == '__main__':
     knapsack_w = 10

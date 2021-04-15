@@ -30,7 +30,7 @@ def knapsack_with_reps(things, knapsack_weight):
     things.sort(key=lambda l: l[0] / l[1], reverse=True)  # сортировка по c/w
 
     n = len(things)
-    d = [0] * (knapsack_weight + 1)
+    matrix = [0] * (knapsack_weight + 1)
 
     weight = [i[1] for i in things[:n]]
     price = [i[0] for i in things[:n]]
@@ -38,9 +38,9 @@ def knapsack_with_reps(things, knapsack_weight):
     for w in range(0, knapsack_weight + 1):
         for i in range(0, n):
             if weight[i] <= w:
-                d[w] = max(d[w], d[w - weight[i]] + price[i])
+                matrix[w] = max(matrix[w], matrix[w - weight[i]] + price[i])
 
-    return d[-1]
+    return matrix[-1]
 
 
 # решение задачи о рюкзаке(без повторений вещей)
@@ -48,15 +48,13 @@ def knapsack_without_reps(things, knapsack_weight):
     things.sort(key=lambda l: l[0] / l[1], reverse=True)  # сортировка по c/w
 
     n = len(things)
-    d = [[0 for _ in range(0, knapsack_weight + 1)]] * n
+    matrix = [[0] * (knapsack_weight + 1) for _ in range(n + 1)]
 
-    weight = [i[1] for i in things[:n]]
-    price = [i[0] for i in things[:n]]
+    for i in range(1, n + 1):
+        for w in range(1, knapsack_weight + 1):
+            matrix[i][w] = matrix[i - 1][w]
 
-    for i in range(1, n):
-        for w in range(0, knapsack_weight + 1):
-            d[i][w] = d[i-1][w]
-            if weight[i] <= w:
-                d[i][w] = max(d[i-1][w], d[i-1][w-weight[i]] + price[i])
+            if w >= things[i - 1][1]:
+                matrix[i][w] = max(matrix[i][w], matrix[i - 1][w - things[i - 1][1]] + things[i - 1][0])
 
-    return d[-1][-1]
+    return matrix[-1][-1]

@@ -1,3 +1,5 @@
+# stack должен быть списком
+
 def push(stack, elem):  # добавление элемента
     stack.append(elem)
 

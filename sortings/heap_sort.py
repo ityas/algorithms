@@ -24,7 +24,7 @@ def heap_sort(nums_list):
     for i in range(n, -1, -1):
         heapify(nums_list, n, i)
 
-    # перемещение кореня в конец списка
+    # перемещение корня в конец списка
     for i in range(n - 1, 0, -1):
         nums_list[i], nums_list[0] = nums_list[0], nums_list[i]
         heapify(nums_list, i, 0)

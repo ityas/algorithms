@@ -1,4 +1,4 @@
-# queue должен быть списком
+# queue = [...]
 
 def push(queue, elem):  # добавление элемента
     queue.append(elem)

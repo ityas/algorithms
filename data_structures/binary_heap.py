@@ -1,8 +1,8 @@
-# heap должен быть списком
+# heap = [...]
 
 def insert(heap, elem):  # добавление элемента
     heap.append(elem)
-    sift(heap)
+    heap_sort(heap)
 
 
 def extract_min(heap):  # возвращение минимального элемента
@@ -11,16 +11,16 @@ def extract_min(heap):  # возвращение минимального эле
 
 def remove(heap, index_elem):  # удаление элемента
     del heap[index_elem]
-    sift(heap)
+    heap_sort(heap)
 
 
 def change_elem(heap, index_elem, new_value):  # изменение элемента
     heap[index_elem] = new_value
-    sift(heap)
+    heap_sort(heap)
 
 
-def sift(nums_list):
-    def heapify(heap, heap_size, root_index):
+def heap_sort(nums_list):
+    def _heapify(heap, heap_size, root_index):
         largest = root_index
         left_child = (2 * root_index) + 1
         right_child = (2 * root_index) + 2
@@ -36,15 +36,15 @@ def sift(nums_list):
         # если наибольший элемент уже не корневой, они меняются местами
         if largest != root_index:
             heap[root_index], heap[largest] = heap[largest], heap[root_index]
-            heapify(heap, heap_size, largest)
+            _heapify(heap, heap_size, largest)
 
     n = len(nums_list)
 
     # создание max-кучи из списка
     for i in range(n, -1, -1):
-        heapify(nums_list, n, i)
+        _heapify(nums_list, n, i)
 
     # перемещение корня в конец списка
     for i in range(n - 1, 0, -1):
         nums_list[i], nums_list[0] = nums_list[0], nums_list[i]
-        heapify(nums_list, i, 0)
+        _heapify(nums_list, i, 0)

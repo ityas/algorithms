@@ -1,4 +1,4 @@
-# сортировка кучей(пирамидальная сортировка)
+# сортировка кучей(пирамидальная сортировка) для бинарной кучи
 def heap_sort(nums_list):
     def heapify(heap, heap_size, root_index):
         largest = root_index

@@ -5,7 +5,7 @@ def depth_first_search(graph, start_node, visited=None):
     if visited is None:
         visited = list()
 
-    if start_node not in visited:
+    if start_node != visited[-1]:
         visited.append(start_node)
 
     for next_node in graph[start_node] - set(visited):
